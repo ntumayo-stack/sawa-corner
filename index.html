@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sawa Corner — Concept Store · Afrique de l'Est · Paris 11e</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 960'%3E%3Crect width='800' height='960' fill='%230D0D0D'/%3E%3Cg stroke='%23D4AF37' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M 340 80 C 348 54 376 42 406 54 C 432 66 444 90 436 110 C 430 126 418 132 412 127'/%3E%3Cpath d='M 340 80 C 332 98 334 120 342 136'/%3E%3Cpath d='M 342 136 C 338 152 336 170 340 184 C 344 198 350 206 346 218 C 342 228 336 234 338 244'/%3E%3Cpath d='M 338 244 C 340 256 348 264 358 268 C 368 272 382 270 390 264'/%3E%3Ccircle cx='362' cy='148' r='3.5' fill='%23D4AF37' stroke='none'/%3E%3Cpath d='M 366 272 C 370 300 374 327 376 354' stroke-width='2.8'/%3E%3Cpath d='M 370 294 C 346 282 318 276 300 284' stroke-width='2.4'/%3E%3Cpath d='M 372 294 C 398 282 426 276 444 284' stroke-width='2.4'/%3E%3Ccircle cx='292' cy='285' r='7.5' fill='%23D4AF37' stroke='none'/%3E%3Ccircle cx='451' cy='285' r='7.5' fill='%23D4AF37' stroke='none'/%3E%3C/g%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --creme:   #F5F0E8;
+  --creme2:  #EDE7DC;
+  --noir:    #0D0D0D;
+  --noir2:   #1A1814;
+  --or:      #D4AF37;
+  --or2:     #C8921A;
+  --gris:    #6B5E4E;
+  --gris2:   #9A8E82;
+  --blanc:   #FDFBF8;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:var(--blanc);
+  color:var(--noir2);
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+::-webkit-scrollbar{width:2px;}
+::-webkit-scrollbar-thumb{background:var(--or);}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:64px;display:flex;align-items:center;
+  justify-content:space-between;padding:0 4rem;
+  transition:background .35s,border-color .35s;
+  border-bottom:1px solid transparent;
+}
+header.on{
+  background:rgba(253,251,248,.96);
+  border-bottom-color:rgba(13,13,13,.1);
+  backdrop-filter:blur(8px);
+}
+.h-logo{display:flex;align-items:center;gap:.8rem;text-decoration:none;}
+.h-logo svg{flex-shrink:0;}
+.h-name{
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:.95rem;
+  letter-spacing:.12em;
+  color:var(--noir2);
+  text-transform:uppercase;
+}
+.h-sub{
+  font-size:.48rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gris);
+  display:block;margin-top:.1rem;font-weight:400;
+}
+
+nav{display:flex;align-items:center;gap:2.4rem;}
+nav a{
+  font-size:.72rem;font-weight:400;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--gris);
+  text-decoration:none;transition:color .2s;
+}
+nav a:hover{color:var(--noir2);}
+.h-cta{
+  background:var(--noir2)!important;color:var(--blanc)!important;
+  padding:.5rem 1.4rem;font-size:.66rem!important;
+  font-weight:600!important;letter-spacing:.1em!important;
+  text-transform:uppercase;transition:background .2s!important;
+}
+.h-cta:hover{background:var(--or)!important;color:var(--noir)!important;}
+
+/* ── HERO PLEIN ÉCRAN ── */
+#hero{
+  min-height:100vh;
+  background:var(--noir);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  padding-top:64px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 65% 40%, rgba(212,175,55,.08) 0%, transparent 70%);
+}
+.hero-content{
+  text-align:center;z-index:2;padding:0 2rem;
+  display:flex;flex-direction:column;align-items:center;gap:2.4rem;
+}
+
+/* Profil SVG dans le hero */
+.hero-profil{
+  width:240px;height:auto;
+  opacity:.92;
+}
+
+.hero-eyebrow{
+  font-size:.72rem;font-weight:600;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--or);
+}
+.hero-title{
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;font-size:clamp(3.2rem,7vw,6rem);
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--creme);line-height:1;
+}
+.hero-title span{color:var(--or);}
+.hero-sub{
+  font-size:clamp(.85rem,1.5vw,1rem);font-weight:300;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(245,240,232,.55);
+}
+.hero-sep{
+  width:60px;height:2px;background:var(--or);
+}
+.hero-desc{
+  font-size:.95rem;font-weight:300;color:rgba(245,240,232,.7);
+  max-width:480px;line-height:1.8;letter-spacing:.02em;
+}
+.btn{
+  display:inline-block;padding:.85rem 2.6rem;
+  font-size:.72rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;text-decoration:none;
+  transition:all .25s;
+}
+.btn-or{background:var(--or);color:var(--noir);}
+.btn-or:hover{background:var(--or2);transform:translateY(-1px);}
+.btn-outline{
+  border:1.5px solid rgba(212,175,55,.45);
+  color:var(--creme);
+}
+.btn-outline:hover{border-color:var(--or);color:var(--or);}
+.hero-btns{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;}
+
+.hero-scroll{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  color:rgba(245,240,232,.35);font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;animation:float 2.5s ease-in-out infinite;
+}
+.hero-scroll span{width:1px;height:40px;background:rgba(212,175,55,.35);}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ── BANDE ANNONCE ── */
+.ticker{
+  background:var(--or);color:var(--noir);
+  padding:.75rem 0;overflow:hidden;
+  font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+}
+.ticker-inner{
+  display:flex;gap:4rem;white-space:nowrap;
+  animation:ticker 28s linear infinite;
+}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS GÉNÉRALES ── */
+section{padding:7rem 4rem;}
+.section-eyebrow{
+  font-size:.65rem;font-weight:600;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--or2);margin-bottom:1rem;
+}
+.section-title{
+  font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:clamp(2rem,4vw,3.2rem);letter-spacing:.04em;
+  text-transform:uppercase;color:var(--noir2);line-height:1.1;
+  margin-bottom:1.6rem;
+}
+.section-title.light{color:var(--creme);}
+.section-lead{
+  font-size:1rem;font-weight:300;color:var(--gris);
+  line-height:1.85;max-width:560px;
+}
+
+/* ── SECTION POURQUOI ── */
+#pourquoi{
+  background:var(--creme);
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;
+}
+.piliers{
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;
+}
+.pilier{
+  padding:1.8rem;border:1px solid rgba(13,13,13,.08);
+  border-radius:2px;transition:border-color .25s,transform .25s;
+}
+.pilier:hover{border-color:var(--or);transform:translateY(-2px);}
+.pilier-ico{font-size:1.6rem;margin-bottom:.8rem;}
+.pilier-title{
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--noir2);margin-bottom:.5rem;
+}
+.pilier-desc{font-size:.82rem;font-weight:300;color:var(--gris);line-height:1.7;}
+
+/* ── PRODUITS ── */
+#produits{background:var(--blanc);}
+.produits-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:2rem;margin-top:3.5rem;
+}
+.produit-card{
+  cursor:pointer;
+}
+.produit-img{
+  aspect-ratio:1;background:var(--creme);
+  overflow:hidden;position:relative;margin-bottom:1.2rem;
+}
+.produit-img::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(212,175,55,.06) 0%,transparent 60%);
+  z-index:1;
+}
+.produit-placeholder{
+  width:100%;height:100%;display:flex;align-items:center;
+  justify-content:center;font-size:3rem;
+  background:var(--creme2);
+}
+.produit-pays{
+  font-size:.58rem;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--or2);margin-bottom:.3rem;
+}
+.produit-name{
+  font-size:.9rem;font-weight:600;color:var(--noir2);
+  margin-bottom:.4rem;letter-spacing:.02em;
+}
+.produit-desc{
+  font-size:.78rem;font-weight:300;color:var(--gris);
+  line-height:1.6;margin-bottom:.8rem;
+}
+.produit-prix{
+  font-size:.85rem;font-weight:700;color:var(--noir2);
+  letter-spacing:.04em;
+}
+
+/* ── 5 PAYS ── */
+#pays{
+  background:var(--noir);
+  padding:7rem 4rem;
+}
+.pays-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1px;margin-top:4rem;
+  border:1px solid rgba(212,175,55,.15);
+}
+.pays-card{
+  padding:3rem 1.8rem;
+  border-right:1px solid rgba(212,175,55,.1);
+  transition:background .3s;
+  text-align:center;
+}
+.pays-card:last-child{border-right:none;}
+.pays-card:hover{background:rgba(212,175,55,.05);}
+.pays-flag{font-size:2.5rem;margin-bottom:1.2rem;display:block;}
+.pays-name{
+  font-size:.65rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--or);margin-bottom:.8rem;
+}
+.pays-desc{font-size:.78rem;font-weight:300;color:rgba(245,240,232,.55);line-height:1.7;}
+
+/* ── CAFÉ ── */
+#cafe{
+  background:var(--creme);
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.cafe-img{
+  background:var(--noir);
+  min-height:520px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.cafe-img-inner{
+  width:180px;opacity:.7;
+}
+.cafe-txt{
+  padding:6rem;display:flex;flex-direction:column;
+  justify-content:center;gap:1.8rem;
+}
+.cafe-items{
+  display:flex;flex-direction:column;gap:1.2rem;margin-top:1rem;
+}
+.cafe-item{
+  display:flex;gap:1.2rem;align-items:flex-start;
+  padding-bottom:1.2rem;border-bottom:1px solid rgba(13,13,13,.08);
+}
+.cafe-item:last-child{border-bottom:none;}
+.cafe-num{
+  font-size:1.4rem;font-weight:800;color:rgba(13,13,13,.08);
+  line-height:1;flex-shrink:0;width:2.5rem;
+  font-family:'Montserrat',sans-serif;
+}
+.cafe-item-title{font-size:.8rem;font-weight:600;margin-bottom:.3rem;color:var(--noir2);}
+.cafe-item-desc{font-size:.8rem;font-weight:300;color:var(--gris);line-height:1.65;}
+
+/* ── ESPRIT ── */
+#esprit{
+  background:var(--noir);text-align:center;
+  padding:9rem 4rem;
+}
+.esprit-inner{max-width:680px;margin:0 auto;}
+.esprit-quote{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(1.4rem,3vw,2.2rem);color:var(--creme);
+  line-height:1.6;margin:2rem 0;opacity:.88;
+}
+.esprit-quote strong{color:var(--or);font-style:normal;}
+
+/* ── ADRESSE ── */
+#adresse{
+  background:var(--creme);
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.adresse-map{
+  background:var(--creme2);
+  min-height:420px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:var(--gris2);letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.adresse-txt{padding:5rem 5rem;display:flex;flex-direction:column;gap:1.6rem;justify-content:center;}
+.adresse-info{display:flex;flex-direction:column;gap:.4rem;}
+.adresse-label{
+  font-size:.58rem;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--or2);
+}
+.adresse-val{font-size:.92rem;font-weight:300;color:var(--noir2);line-height:1.7;}
+.horaires{display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem;margin-top:.4rem;}
+.horaire-jour{font-size:.78rem;font-weight:600;color:var(--noir2);}
+.horaire-heure{font-size:.78rem;font-weight:300;color:var(--gris);}
+
+/* ── NEWSLETTER ── */
+#newsletter{
+  background:var(--noir2);text-align:center;padding:5rem 4rem;
+}
+.nl-title{
+  font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:1.8rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--creme);margin-bottom:.8rem;
+}
+.nl-sub{font-size:.85rem;color:rgba(245,240,232,.45);margin-bottom:2.4rem;font-weight:300;}
+.nl-form{display:flex;gap:0;max-width:480px;margin:0 auto;}
+.nl-input{
+  flex:1;padding:.9rem 1.4rem;
+  background:rgba(245,240,232,.06);
+  border:1px solid rgba(245,240,232,.15);
+  border-right:none;color:var(--creme);
+  font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:300;
+  outline:none;transition:border-color .2s;
+}
+.nl-input::placeholder{color:rgba(245,240,232,.3);}
+.nl-input:focus{border-color:var(--or);}
+.nl-btn{
+  padding:.9rem 1.8rem;background:var(--or);
+  color:var(--noir);font-family:'Montserrat',sans-serif;
+  font-size:.68rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;border:none;cursor:pointer;
+  transition:background .2s;
+}
+.nl-btn:hover{background:var(--or2);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--noir);
+  padding:5rem 4rem 3rem;
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;
+}
+.ft-logo-zone{display:flex;flex-direction:column;gap:1.4rem;}
+.ft-brand{
+  font-family:'Montserrat',sans-serif;font-weight:800;
+  font-size:1.1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--creme);
+}
+.ft-desc{font-size:.8rem;font-weight:300;color:rgba(245,240,232,.4);line-height:1.8;max-width:280px;}
+.ft-social{display:flex;gap:1rem;margin-top:.8rem;}
+.ft-social a{
+  width:36px;height:36px;border:1px solid rgba(212,175,55,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(245,240,232,.4);font-size:.7rem;text-decoration:none;
+  transition:all .2s;
+}
+.ft-social a:hover{border-color:var(--or);color:var(--or);}
+
+.ft-col-title{
+  font-size:.6rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--or);margin-bottom:1.4rem;
+}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.ft-col ul a{
+  font-size:.78rem;font-weight:300;color:rgba(245,240,232,.4);
+  text-decoration:none;transition:color .2s;
+}
+.ft-col ul a:hover{color:var(--or);}
+.ft-bottom{
+  background:var(--noir);
+  padding:1.4rem 4rem;border-top:1px solid rgba(212,175,55,.1);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ft-copy{font-size:.68rem;font-weight:300;color:rgba(245,240,232,.25);letter-spacing:.06em;}
+.ft-or{width:40px;height:1px;background:var(--or);opacity:.4;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  section{padding:5rem 2rem;}
+  header{padding:0 2rem;}
+  #pourquoi,#cafe,#adresse{grid-template-columns:1fr;}
+  .produits-grid{grid-template-columns:repeat(2,1fr);}
+  .pays-grid{grid-template-columns:repeat(2,1fr);gap:0;}
+  footer{grid-template-columns:1fr;}
+  .ft-bottom{flex-direction:column;gap:.6rem;padding:1.2rem 2rem;}
+  nav{gap:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header id="hd">
+  <a href="#hero" class="h-logo">
+    <svg width="38" height="50" viewBox="0 0 800 960" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Sawa Corner">
+      <g stroke="#D4AF37" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 340 80 C 348 54 376 42 406 54 C 432 66 444 90 436 110 C 430 126 418 132 412 127"/>
+        <path d="M 340 80 C 332 98 334 120 342 136"/>
+        <path d="M 344 70 C 364 58 390 56 410 66" stroke-width="1.4" opacity=".5"/>
+        <path d="M 342 77 C 362 64 388 62 409 73" stroke-width="1" opacity=".35"/>
+        <path d="M 342 136 C 338 152 336 170 340 184 C 344 198 350 206 346 218 C 342 228 336 234 338 244"/>
+        <path d="M 336 230 C 344 226 353 228 356 234 C 352 241 343 239 336 235 Z" fill="#D4AF37" fill-opacity=".2"/>
+        <path d="M 338 244 C 340 256 348 264 358 268 C 368 272 382 270 390 264"/>
+        <path d="M 338 244 C 322 252 312 264 310 278"/>
+        <path d="M 390 264 C 408 260 426 252 434 240"/>
+        <ellipse cx="364" cy="148" rx="10" ry="6.5" stroke-width="2"/>
+        <circle cx="362" cy="148" r="3.5" fill="#D4AF37" stroke="none"/>
+        <path d="M 366 272 C 370 300 374 327 376 354" stroke-width="2.8"/>
+        <path d="M 370 294 C 346 282 318 276 300 284" stroke-width="2.4"/>
+        <path d="M 373 324 C 346 312 316 309 298 318" stroke-width="2.2"/>
+        <path d="M 372 294 C 398 282 426 276 444 284" stroke-width="2.4"/>
+        <path d="M 374 324 C 400 312 430 309 447 318" stroke-width="2.2"/>
+        <ellipse cx="296" cy="282" rx="22" ry="9" transform="rotate(-32 296 282)" fill="#D4AF37" fill-opacity=".12"/>
+        <ellipse cx="448" cy="282" rx="22" ry="9" transform="rotate(32 448 282)" fill="#D4AF37" fill-opacity=".12"/>
+        <circle cx="292" cy="285" r="7.5" fill="#D4AF37" stroke="none" opacity=".9"/>
+        <circle cx="287" cy="318" r="7" fill="#D4AF37" stroke="none" opacity=".85"/>
+        <circle cx="451" cy="285" r="7.5" fill="#D4AF37" stroke="none" opacity=".9"/>
+        <circle cx="456" cy="318" r="7" fill="#D4AF37" stroke="none" opacity=".85"/>
+      </g>
+    </svg>
+    <div>
+      <span class="h-name">Sawa Corner</span>
+      <span class="h-sub">Concept Store · Afrique de l'Est</span>
+    </div>
+  </a>
+  <nav>
+    <a href="#produits">Boutique</a>
+    <a href="#pays">Origines</a>
+    <a href="#cafe">Notre café</a>
+    <a href="#esprit">Notre histoire</a>
+    <a href="#adresse" class="h-cta">Nous trouver</a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Paris 11e · Ouverture 2026</p>
+
+    <!-- Profil femme SVG inline -->
+    <svg class="hero-profil" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="#D4AF37" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 340 80 C 348 54 376 42 406 54 C 432 66 444 90 436 110 C 430 126 418 132 412 127"/>
+        <path d="M 340 80 C 332 98 334 120 342 136"/>
+        <path d="M 344 70 C 364 58 390 56 410 66" stroke-width="1.2" opacity=".5"/>
+        <path d="M 342 77 C 362 64 388 62 409 73" stroke-width="1" opacity=".35"/>
+        <path d="M 341 84 C 360 72 385 70 406 81" stroke-width=".8" opacity=".25"/>
+        <path d="M 342 136 C 338 152 336 170 340 184 C 344 198 350 206 346 218 C 342 228 336 234 338 244"/>
+        <path d="M 332 192 C 326 200 327 210 332 214"/>
+        <path d="M 336 230 C 344 226 353 228 356 234 C 352 241 343 239 336 235 Z" fill="#D4AF37" fill-opacity=".2"/>
+        <path d="M 338 244 C 340 256 348 264 358 268 C 368 272 382 270 390 264"/>
+        <path d="M 338 244 C 322 252 312 264 310 278"/>
+        <path d="M 390 264 C 408 260 426 252 434 240"/>
+        <ellipse cx="364" cy="148" rx="10" ry="6.5" stroke-width="2"/>
+        <circle cx="362" cy="148" r="3.5" fill="#D4AF37" stroke="none"/>
+        <line x1="354" y1="143" x2="350" y2="138" stroke-width="1.5"/>
+        <line x1="364" y1="141" x2="364" y2="135" stroke-width="1.5"/>
+        <line x1="374" y1="143" x2="378" y2="138" stroke-width="1.5"/>
+        <path d="M 352 135 C 363 130 376 131 382 137" stroke-width="2"/>
+        <path d="M 366 272 C 370 300 374 327 376 354" stroke-width="2.6"/>
+        <path d="M 370 294 C 346 282 318 276 300 284" stroke-width="2.2"/>
+        <path d="M 373 324 C 346 312 316 309 298 318" stroke-width="2"/>
+        <path d="M 372 294 C 398 282 426 276 444 284" stroke-width="2.2"/>
+        <path d="M 374 324 C 400 312 430 309 447 318" stroke-width="2"/>
+        <ellipse cx="296" cy="282" rx="22" ry="9" transform="rotate(-32 296 282)" fill="#D4AF37" fill-opacity=".12" stroke-width="1.6"/>
+        <ellipse cx="291" cy="315" rx="19" ry="8" transform="rotate(-28 291 315)" fill="#D4AF37" fill-opacity=".12" stroke-width="1.6"/>
+        <ellipse cx="448" cy="282" rx="22" ry="9" transform="rotate(32 448 282)" fill="#D4AF37" fill-opacity=".12" stroke-width="1.6"/>
+        <ellipse cx="453" cy="315" rx="19" ry="8" transform="rotate(28 453 315)" fill="#D4AF37" fill-opacity=".12" stroke-width="1.6"/>
+        <circle cx="292" cy="285" r="7.5" fill="#D4AF37" stroke="none" opacity=".9"/>
+        <circle cx="287" cy="318" r="7" fill="#D4AF37" stroke="none" opacity=".85"/>
+        <circle cx="451" cy="285" r="7.5" fill="#D4AF37" stroke="none" opacity=".9"/>
+        <circle cx="456" cy="318" r="7" fill="#D4AF37" stroke="none" opacity=".85"/>
+      </g>
+    </svg>
+
+    <h1 class="hero-title">SAWA<br><span>CORNER</span></h1>
+    <p class="hero-sub">Concept Store · Afrique de l'Est</p>
+    <div class="hero-sep"></div>
+    <p class="hero-desc">L'Afrique de l'Est dans toute sa richesse — cafés de spécialité, épices, saveurs et produits d'exception, au cœur de Paris.</p>
+    <div class="hero-btns">
+      <a href="#produits" class="btn btn-or">Découvrir la boutique</a>
+      <a href="#esprit" class="btn btn-outline">Notre histoire</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll <span></span></div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>Rwanda</span><span>·</span><span>Burundi</span><span>·</span>
+    <span>Kenya</span><span>·</span><span>Tanzanie</span><span>·</span>
+    <span>Ouganda</span><span>·</span><span>Café de spécialité</span><span>·</span>
+    <span>Épicerie fine</span><span>·</span><span>Produits d'exception</span><span>·</span>
+    <span>Paris 11e</span><span>·</span><span>Saveurs</span><span>·</span>
+    <span>Origines</span><span>·</span><span>Rwanda</span><span>·</span>
+    <span>Burundi</span><span>·</span><span>Kenya</span><span>·</span>
+    <span>Tanzanie</span><span>·</span><span>Ouganda</span><span>·</span>
+    <span>Café de spécialité</span><span>·</span><span>Épicerie fine</span><span>·</span>
+    <span>Produits d'exception</span><span>·</span><span>Paris 11e</span><span>·</span>
+  </div>
+</div>
+
+<!-- ══ POURQUOI SAWA CORNER ══ -->
+<section id="pourquoi">
+  <div>
+    <p class="section-eyebrow">Notre promesse</p>
+    <h2 class="section-title">L'Afrique de l'Est,<br>sans compromis</h2>
+    <p class="section-lead">Nous sélectionnons chaque produit directement auprès des producteurs du Rwanda, du Burundi, du Kenya, de Tanzanie et d'Ouganda. Pas de filière générique — des origines précises, des histoires vraies.</p>
+    <div class="piliers">
+      <div class="pilier">
+        <div class="pilier-ico">☕</div>
+        <div class="pilier-title">Café de spécialité</div>
+        <div class="pilier-desc">Cafés d'altitude sélectionnés, notés +84/100, torréfiés à Paris.</div>
+      </div>
+      <div class="pilier">
+        <div class="pilier-ico">🌿</div>
+        <div class="pilier-title">Épicerie fine</div>
+        <div class="pilier-desc">Épices, huiles, miels et sauces rares introuvables ailleurs à Paris.</div>
+      </div>
+      <div class="pilier">
+        <div class="pilier-ico">🛍️</div>
+        <div class="pilier-title">Coffrets cadeaux</div>
+        <div class="pilier-desc">Sélections curatées pour offrir l'Afrique de l'Est à vos proches.</div>
+      </div>
+      <div class="pilier">
+        <div class="pilier-ico">🌱</div>
+        <div class="pilier-title">Produits frais</div>
+        <div class="pilier-desc">Bananes plantain, avocats, patates douces et fruits de saison.</div>
+      </div>
+    </div>
+  </div>
+  <div style="background:var(--noir);min-height:480px;display:flex;align-items:center;justify-content:center;padding:3rem;">
+    <svg width="300" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg" opacity=".8">
+      <g stroke="#D4AF37" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 340 80 C 348 54 376 42 406 54 C 432 66 444 90 436 110 C 430 126 418 132 412 127"/>
+        <path d="M 340 80 C 332 98 334 120 342 136"/>
+        <path d="M 344 70 C 364 58 390 56 410 66" stroke-width="1.2" opacity=".5"/>
+        <path d="M 342 136 C 338 152 336 170 340 184 C 344 198 350 206 346 218 C 342 228 336 234 338 244"/>
+        <path d="M 336 230 C 344 226 353 228 356 234 C 352 241 343 239 336 235 Z" fill="#D4AF37" fill-opacity=".2"/>
+        <path d="M 338 244 C 340 256 348 264 358 268 C 368 272 382 270 390 264"/>
+        <path d="M 338 244 C 322 252 312 264 310 278"/>
+        <path d="M 390 264 C 408 260 426 252 434 240"/>
+        <ellipse cx="364" cy="148" rx="10" ry="6.5" stroke-width="2"/>
+        <circle cx="362" cy="148" r="3.5" fill="#D4AF37" stroke="none"/>
+        <path d="M 366 272 C 370 300 374 327 376 354" stroke-width="2.6"/>
+        <path d="M 370 294 C 346 282 318 276 300 284" stroke-width="2.2"/>
+        <path d="M 373 324 C 346 312 316 309 298 318" stroke-width="2"/>
+        <path d="M 372 294 C 398 282 426 276 444 284" stroke-width="2.2"/>
+        <path d="M 374 324 C 400 312 430 309 447 318" stroke-width="2"/>
+        <ellipse cx="296" cy="282" rx="22" ry="9" transform="rotate(-32 296 282)" fill="#D4AF37" fill-opacity=".12" stroke-width="1.6"/>
+        <ellipse cx="291" cy="315" rx="19" ry="8" transform="rotate(-28 291 315)" fill="#D4AF37" fill-opacity=".12" stroke-width="1.6"/>
+        <ellipse cx="448" cy="282" rx="22" ry="9" transform="rotate(32 448 282)" fill="#D4AF37" fill-opacity=".12" stroke-width="1.6"/>
+        <ellipse cx="453" cy="315" rx="19" ry="8" transform="rotate(28 453 315)" fill="#D4AF37" fill-opacity=".12" stroke-width="1.6"/>
+        <circle cx="292" cy="285" r="7.5" fill="#D4AF37" stroke="none" opacity=".9"/>
+        <circle cx="287" cy="318" r="7" fill="#D4AF37" stroke="none" opacity=".85"/>
+        <circle cx="451" cy="285" r="7.5" fill="#D4AF37" stroke="none" opacity=".9"/>
+        <circle cx="456" cy="318" r="7" fill="#D4AF37" stroke="none" opacity=".85"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ══ PRODUITS ══ -->
+<section id="produits">
+  <p class="section-eyebrow">Notre sélection</p>
+  <h2 class="section-title">Produits d'exception</h2>
+  <div class="produits-grid">
+    <div class="produit-card">
+      <div class="produit-img"><div class="produit-placeholder">☕</div></div>
+      <p class="produit-pays">Rwanda · Altitude 1800m</p>
+      <h3 class="produit-name">Café Rwanda Bourbon</h3>
+      <p class="produit-desc">Notes de fruits rouges, caramel et fleurs. Lavé, station Maraba.</p>
+      <span class="produit-prix">14,90 €</span>
+    </div>
+    <div class="produit-card">
+      <div class="produit-img"><div class="produit-placeholder">🌶️</div></div>
+      <p class="produit-pays">Rwanda · Sauce piquante</p>
+      <h3 class="produit-name">Akabanga 100ml</h3>
+      <p class="produit-desc">L'huile pimentée rwandaise. Utilisée à la goutte.</p>
+      <span class="produit-prix">8,50 €</span>
+    </div>
+    <div class="produit-card">
+      <div class="produit-img"><div class="produit-placeholder">🍯</div></div>
+      <p class="produit-pays">Ouganda · Pur cru</p>
+      <h3 class="produit-name">Miel d'Acacia Ouganda</h3>
+      <p class="produit-desc">Miel cru, non traité, récolté en forêt tropicale.</p>
+      <span class="produit-prix">12,00 €</span>
+    </div>
+    <div class="produit-card">
+      <div class="produit-img"><div class="produit-placeholder">🥑</div></div>
+      <p class="produit-pays">Kenya · Produit frais</p>
+      <h3 class="produit-name">Huile d'Avocat Kenya</h3>
+      <p class="produit-desc">Première pression à froid. Idéale pour la cuisine et la peau.</p>
+      <span class="produit-prix">16,50 €</span>
+    </div>
+    <div class="produit-card">
+      <div class="produit-img"><div class="produit-placeholder">🎁</div></div>
+      <p class="produit-pays">Sélection · Coffret</p>
+      <h3 class="produit-name">Coffret Découverte</h3>
+      <p class="produit-desc">Café + épices + sauce piquante. Le meilleur pour offrir.</p>
+      <span class="produit-prix">35,00 €</span>
+    </div>
+    <div class="produit-card">
+      <div class="produit-img"><div class="produit-placeholder">🌿</div></div>
+      <p class="produit-pays">Tanzanie · Épice</p>
+      <h3 class="produit-name">Mélange Tanzanie</h3>
+      <p class="produit-desc">Cardamome, cannelle, clou de girofle. Blend de chef.</p>
+      <span class="produit-prix">9,90 €</span>
+    </div>
+    <div class="produit-card">
+      <div class="produit-img"><div class="produit-placeholder">☕</div></div>
+      <p class="produit-pays">Burundi · Altitude 1750m</p>
+      <h3 class="produit-name">Café Burundi Kayanza</h3>
+      <p class="produit-desc">Corps rond, notes de pêche et jasmin. Station Shembati.</p>
+      <span class="produit-prix">15,90 €</span>
+    </div>
+    <div class="produit-card">
+      <div class="produit-img"><div class="produit-placeholder">🧂</div></div>
+      <p class="produit-pays">Rwanda · Farine</p>
+      <h3 class="produit-name">Farine de Manioc Kinazi</h3>
+      <p class="produit-desc">Sèche, fine, fermentée traditionnellement. Sans gluten.</p>
+      <span class="produit-prix">5,50 €</span>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:3.5rem;">
+    <a href="#" class="btn btn-or">Voir tous les produits</a>
+  </div>
+</section>
+
+<!-- ══ 5 PAYS ══ -->
+<section id="pays" style="padding:7rem 4rem;">
+  <p class="section-eyebrow" style="color:var(--or)">Nos origines</p>
+  <h2 class="section-title light">5 pays, une même vision</h2>
+  <div class="pays-grid">
+    <div class="pays-card">
+      <span class="pays-flag">🇷🇼</span>
+      <p class="pays-name">Rwanda</p>
+      <p class="pays-desc">Hauts plateaux de 1400 à 2000m. Cafés lavés, fruités, floraux. Akabanga. Miel.</p>
+    </div>
+    <div class="pays-card">
+      <span class="pays-flag">🇧🇮</span>
+      <p class="pays-name">Burundi</p>
+      <p class="pays-desc">Station Kayanza, Kirimiro. Notes pêche, jasmin. Tambours royaux et culture.</p>
+    </div>
+    <div class="pays-card">
+      <span class="pays-flag">🇰🇪</span>
+      <p class="pays-name">Kenya</p>
+      <p class="pays-desc">Variété SL28/SL34. Acidité brillante. Huile d'avocat, thé Masai.</p>
+    </div>
+    <div class="pays-card">
+      <span class="pays-flag">🇹🇿</span>
+      <p class="pays-name">Tanzanie</p>
+      <p class="pays-desc">Kilimandjaro, Mbeya. Épices, vanille, gingembre. Corps plein.</p>
+    </div>
+    <div class="pays-card" style="border-right:none;">
+      <span class="pays-flag">🇺🇬</span>
+      <p class="pays-name">Ouganda</p>
+      <p class="pays-desc">Sipi Falls, Mt Elgon. Miel de forêt. Robusta de qualité rare.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAFÉ ══ -->
+<section id="cafe" style="padding:0;">
+  <div class="cafe-img">
+    <svg class="cafe-img-inner" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#D4AF37" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 340 80 C 348 54 376 42 406 54 C 432 66 444 90 436 110"/>
+        <path d="M 340 80 C 332 98 334 120 342 136"/>
+        <path d="M 342 136 C 338 152 336 170 340 184 C 344 198 350 206 346 218"/>
+        <ellipse cx="364" cy="148" rx="10" ry="6.5"/>
+        <circle cx="362" cy="148" r="3.5" fill="#D4AF37" stroke="none"/>
+        <path d="M 366 272 C 370 300 374 327 376 354" stroke-width="2.6"/>
+        <path d="M 370 294 C 346 282 318 276 300 284"/>
+        <path d="M 372 294 C 398 282 426 276 444 284"/>
+        <ellipse cx="296" cy="282" rx="22" ry="9" transform="rotate(-32 296 282)" fill="#D4AF37" fill-opacity=".1"/>
+        <ellipse cx="448" cy="282" rx="22" ry="9" transform="rotate(32 448 282)" fill="#D4AF37" fill-opacity=".1"/>
+        <circle cx="292" cy="285" r="7.5" fill="#D4AF37" stroke="none" opacity=".8"/>
+        <circle cx="451" cy="285" r="7.5" fill="#D4AF37" stroke="none" opacity=".8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="cafe-txt">
+    <div>
+      <p class="section-eyebrow">Notre café</p>
+      <h2 class="section-title">Le café comme<br>une expérience</h2>
+    </div>
+    <p class="section-lead">Nous sélectionnons uniquement des cafés de spécialité notés au-dessus de 84/100, cultivés à haute altitude dans les pays d'Afrique de l'Est.</p>
+    <div class="cafe-items">
+      <div class="cafe-item">
+        <span class="cafe-num">01</span>
+        <div>
+          <p class="cafe-item-title">Sourcing direct producteur</p>
+          <p class="cafe-item-desc">Relations directes avec les coopératives du Rwanda et Burundi.</p>
+        </div>
+      </div>
+      <div class="cafe-item">
+        <span class="cafe-num">02</span>
+        <div>
+          <p class="cafe-item-title">Haute altitude, haute qualité</p>
+          <p class="cafe-item-desc">Cafés cultivés entre 1400 et 2000m. Densité et complexité aromatique.</p>
+        </div>
+      </div>
+      <div class="cafe-item">
+        <span class="cafe-num">03</span>
+        <div>
+          <p class="cafe-item-title">Dégustation en boutique</p>
+          <p class="cafe-item-desc">Venez tester avant d'acheter. Atelier dégustation le samedi.</p>
+        </div>
+      </div>
+    </div>
+    <a href="#produits" class="btn btn-or" style="align-self:flex-start">Voir nos cafés</a>
+  </div>
+</section>
+
+<!-- ══ ESPRIT ══ -->
+<section id="esprit">
+  <div class="esprit-inner">
+    <p class="section-eyebrow" style="color:var(--or);text-align:center;">Notre histoire</p>
+    <h2 class="section-title light" style="text-align:center;">Karibu — Bienvenue</h2>
+    <p class="esprit-quote">
+      "Sawa Corner est né d'une conviction : <strong>les saveurs de l'Afrique de l'Est méritent une vitrine à Paris.</strong> Pas comme une curiosité — comme une évidence."
+    </p>
+    <p style="font-size:.88rem;font-weight:300;color:rgba(245,240,232,.5);line-height:1.9;text-align:center;">
+      Fondé par Landry Bizimungu, avec des racines au Rwanda et au Burundi, Sawa Corner est plus qu'un concept store. C'est un pont entre deux mondes — Paris 11e et les hauts plateaux d'Afrique de l'Est. Chaque produit a une histoire. Chaque origine a un visage.
+    </p>
+    <div style="display:flex;justify-content:center;margin-top:2.8rem;">
+      <a href="#adresse" class="btn btn-or">Venir nous voir</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ADRESSE ══ -->
+<section id="adresse" style="padding:0;">
+  <div class="adresse-map">
+    <div style="text-align:center;opacity:.5;">
+      <div style="font-size:2rem;margin-bottom:.8rem;">📍</div>
+      <div>14 rue de la Folie Méricourt<br>Paris 11e</div>
+    </div>
+  </div>
+  <div class="adresse-txt">
+    <p class="section-eyebrow">Nous trouver</p>
+    <h2 class="section-title" style="font-size:2rem;">Paris 11e</h2>
+    <div class="adresse-info">
+      <span class="adresse-label">Adresse</span>
+      <span class="adresse-val">14 rue de la Folie Méricourt<br>75011 Paris</span>
+    </div>
+    <div class="adresse-info">
+      <span class="adresse-label">Métro</span>
+      <span class="adresse-val">Oberkampf (L5/L9) · St-Ambroise (L9)</span>
+    </div>
+    <div class="adresse-info">
+      <span class="adresse-label">Horaires</span>
+      <div class="horaires">
+        <span class="horaire-jour">Lun – Ven</span><span class="horaire-heure">10h – 20h</span>
+        <span class="horaire-jour">Samedi</span><span class="horaire-heure">9h – 20h</span>
+        <span class="horaire-jour">Dimanche</span><span class="horaire-heure">10h – 18h</span>
+      </div>
+    </div>
+    <div class="adresse-info">
+      <span class="adresse-label">Contact</span>
+      <span class="adresse-val">contact@sawacorner.fr<br>www.sawacorner.fr</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWSLETTER ══ -->
+<section id="newsletter">
+  <h2 class="nl-title">Restez dans la boucle</h2>
+  <p class="nl-sub">Nouveaux produits, événements, arrivages — en avant-première.</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="Votre adresse email"/>
+    <button class="nl-btn">S'inscrire</button>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="ft-logo-zone">
+    <span class="ft-brand">Sawa Corner</span>
+    <p class="ft-desc">Concept store africain premium au cœur de Paris 11e. Cafés de spécialité, épicerie fine et produits d'exception d'Afrique de l'Est.</p>
+    <div class="ft-social">
+      <a href="#" title="Instagram">IG</a>
+      <a href="#" title="Facebook">FB</a>
+      <a href="#" title="WhatsApp">WA</a>
+    </div>
+  </div>
+  <div class="ft-col">
+    <p class="ft-col-title">Boutique</p>
+    <ul>
+      <li><a href="#">Cafés de spécialité</a></li>
+      <li><a href="#">Épices & Sauces</a></li>
+      <li><a href="#">Miels & Huiles</a></li>
+      <li><a href="#">Produits frais</a></li>
+      <li><a href="#">Coffrets cadeaux</a></li>
+    </ul>
+  </div>
+  <div class="ft-col">
+    <p class="ft-col-title">À propos</p>
+    <ul>
+      <li><a href="#">Notre histoire</a></li>
+      <li><a href="#">Nos origines</a></li>
+      <li><a href="#">Venir en boutique</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Mentions légales</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="ft-bottom">
+  <span class="ft-copy">© 2026 Sawa Corner · 14 rue de la Folie Méricourt, Paris 11e</span>
+  <span class="ft-or"></span>
+  <span class="ft-copy">www.sawacorner.fr</span>
+</div>
+
+<script>
+// Header scroll
+const hd = document.getElementById('hd');
+window.addEventListener('scroll',()=>{
+  hd.classList.toggle('on', window.scrollY > 40);
+});
+</script>
+</body>
+</html>
